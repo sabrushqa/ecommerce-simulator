@@ -26,3 +26,14 @@ pytest --cov=simulate_ecommerce --cov-report=term-missing
 
 Couverture actuelle : 100 % (9 tests, `requests.post` mocké — aucun appel
 réseau réel dans les tests).
+
+### Avec Docker (sans installer Python)
+
+```bash
+docker build -t ecommerce-simulator .
+docker run --rm \
+  -e SWITCH_BASE_URL=http://switch-monetique:8090 \
+  -e MONETIQUE_INTERNAL_TOKEN=... \
+  -e MONETIQUE_SIGNATURE_SECRET=... \
+  ecommerce-simulator
+```
